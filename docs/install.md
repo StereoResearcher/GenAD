@@ -63,6 +63,42 @@ pip install setuptools==59.5.0
 
 答案来自https://blog.csdn.net/qq_45783225/article/details/129191110
 
+运行报错
+```shell
+WARNING:__main__:*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+projects.mmdet3d_plugin
+projects.mmdet3d_plugin
+Traceback (most recent call last):
+  File "tools/train.py", line 321, in <module>
+    main()
+  File "tools/train.py", line 180, in main
+    cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
+  File "/root/anaconda3/envs/genad/lib/python3.8/site-packages/mmcv/utils/config.py", line 541, in dump
+    f.write(self.pretty_text)
+  File "/root/anaconda3/envs/genad/lib/python3.8/site-packages/mmcv/utils/config.py", line 496, in pretty_text
+    text, _ = FormatCode(text, style_config=yapf_style, verify=True)Traceback (most recent call last):
+
+  File "tools/train.py", line 321, in <module>
+TypeError: FormatCode() got an unexpected keyword argument 'verify'
+    main()
+  File "tools/train.py", line 180, in main
+    cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
+  File "/root/anaconda3/envs/genad/lib/python3.8/site-packages/mmcv/utils/config.py", line 541, in dump
+    f.write(self.pretty_text)
+  File "/root/anaconda3/envs/genad/lib/python3.8/site-packages/mmcv/utils/config.py", line 496, in pretty_text
+    text, _ = FormatCode(text, style_config=yapf_style, verify=True)
+TypeError: FormatCode() got an unexpected keyword argument 'verify'
+```
+
+根据 https://blog.csdn.net/ZZZZ_Y_/article/details/133902230
+
+```shell
+pip uninstall yapf
+pip install yapf==0.40.1
+```
+
 **g. Install nuscenes-devkit.**
 ```shell
 pip install nuscenes-devkit==1.1.9
