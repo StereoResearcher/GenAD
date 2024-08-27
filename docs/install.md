@@ -46,6 +46,22 @@ cd /path/to/mmdetection3d
 git checkout -f v0.17.1
 python setup.py develop
 ```
+或
+```shell
+CXX=g++-9 CC=gcc-9 LD=g++-9 pip install -e .
+```
+
+答案来自 https://stackoverflow.com/questions/72009245/subprocess-calledprocesserror-command-which-c-returned-non-zero-exit
+
+在训练的时候有个问题：AttributeError:module ‘distutils‘ has no attribute ‘version
+
+这个时候去环境里看一下setuptools的版本，问题可能出在setuptools的版本过高。直接安装即可：
+
+```shell
+pip install setuptools==59.5.0
+```
+
+答案来自https://blog.csdn.net/qq_45783225/article/details/129191110
 
 **g. Install nuscenes-devkit.**
 ```shell
